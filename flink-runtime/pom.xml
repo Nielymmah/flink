@@ -218,7 +218,7 @@ under the License.
 		<dependency>
 			<groupId>io.airlift</groupId>
 			<artifactId>aircompressor</artifactId>
-			<version>0.21</version>
+			<version>0.27</version>
 			<optional>${flink.markBundledAsOptional}</optional>
 		</dependency>
 
@@ -446,16 +446,13 @@ under the License.
 								</goals>
 								<configuration>
 									<target>
-										<condition property="optional.classes" value="--classes '${generate.classes}'"
-												   else="">
+										<condition property="optional.classes" value="--classes '${generate.classes}'" else="">
 											<isset property="generate.classes"/>
 										</condition>
-										<condition property="optional.prefixes"
-												   value="--prefixes '${generate.prefixes}'" else="">
+										<condition property="optional.prefixes" value="--prefixes '${generate.prefixes}'" else="">
 											<isset property="generate.prefixes"/>
 										</condition>
-										<java classname="org.apache.flink.test.migration.MigrationTestsSnapshotGenerator"
-											  fork="true" failonerror="true" dir="${project.basedir}">
+										<java classname="org.apache.flink.test.migration.MigrationTestsSnapshotGenerator" fork="true" failonerror="true" dir="${project.basedir}">
 											<classpath refid="maven.test.classpath"/>
 											<arg value="--dir"/>
 											<arg line="${project.basedir}"/>
